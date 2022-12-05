@@ -1,22 +1,38 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { get } from 'http';
+import {UserRequest} from './user.request';
 import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
     constructor(
-        private readonly userService: UserService,
+        private readonly userService: UserService, //dari user service dipanggil defaultnya readlonly 
     ){}
 
     @Get()
-        async getUser(@Query() userid: string){
-            return await this.userService.create();
-        }
+    async getUser(@Query() request: UserRequest){
+        return await this.userService.get(request);
+    }
 
     @Get(':userid')
-    async getUserParam(@Param('userid') userid: string){
-        return await this.userService.create();
+    async getUserParam(@Param('userid') request: UserRequest){
+        return await this.userService.get(request);
     }
+
+    
+
+
+
+
+    // @Get()
+    //     async getUser(@Query() userid: string){
+    //         return await this.userService.create();
+    //     }
+
+    // @Get(':userid')
+    // async getUserParam(@Param('userid') userid: string){
+    //     return await this.userService.create();
+    // }
 }
 
 //get
