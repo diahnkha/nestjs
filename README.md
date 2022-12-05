@@ -72,7 +72,9 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
-nest new project-name
+## ##############################################################################
+
+<!-- nest new project-name
 
 
 npx nest new hello-world 
@@ -135,7 +137,7 @@ Biasanya di user ada spec api, adalah kumpulan schema yang diminta dari customer
     "success": true,
     "path": "api/v1/user"
     "payload": []
-}
+} -->
 
 
 
