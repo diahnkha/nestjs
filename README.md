@@ -71,3 +71,72 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+nest new project-name
+
+
+npx nest new hello-world 
+npx nest g co user
+npx nest g mo user
+npx nest g service user
+
+    @Get('get-user')
+        async getUser(){
+
+        }
+
+Tipe parameter, body, query, array
+
+Get param, query
+
+Kalau yang lngin dipanggil async, maka methodnya juga async harus satu tipe. Bisa promise
+
+//get
+// http:localhost/api/user
+
+//bedanya cara penulisannya
+
+//get ada paramter, ada querynya
+// http:localhost/api/user?id=123
+
+    @Get()
+        async getUser(@Query() userid: string){
+            return await this.userService.create();
+        }
+
+
+//get ada paramnya, ada parameter
+// http:localhost/api/user/123
+
+    @Get(':userid')
+    async getUserParam(@Param('userid') userid: string){
+        return await this.userService.create();
+    }
+
+
+Setelah itu ke modul.
+User.module.ts
+// daftarin controllernya ke module
+import { UserController } from './user.controller';
+//add ini juga
+@Module({
+  providers: [UserService],
+  controllers: [UserController],
+  exports: [UserService]
+})
+
+
+
+Bakal auto add module di module.ts
+
+Biasanya di user ada spec api, adalah kumpulan schema yang diminta dari customernya. Misal schema pengen ada di parentnya akses propertinya. 
+
+{
+    "success": true,
+    "path": "api/v1/user"
+    "payload": []
+}
+
+
+
+
