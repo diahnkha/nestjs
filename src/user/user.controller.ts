@@ -9,14 +9,17 @@ export class UserController {
         private readonly userService: UserService, //dari user service dipanggil defaultnya readlonly 
     ){}
 
+
+    //http://localhost:3000/user?userId=144&userName=diah&alamat=jl
     @Get()
     async getUser(@Query() request: UserRequest){
         return await this.userService.get(request);
     }
 
+    //http://localhost:3000/user/123
     @Get(':userid')
-    async getUserParam(@Param('userid') request: UserRequest){
-        return await this.userService.get(request);
+    async getUserParam(@Param('userid') userid: string){
+        return await this.userService.getparam(userid);
     }
 
     

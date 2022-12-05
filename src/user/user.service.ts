@@ -7,10 +7,10 @@ export class UserService {
         return "this is api for getting user";
     }
 
-    // async get(userId: UserRequest){
-    //     return "api get userid" + userId;
-    //     // return `api get userid=${userId}`;
-    // }
+    async getparam(userId: string){
+        return "api get userid " + userId;
+        // return `api get userid=${userId}`;
+    }
 
     async get(request: UserRequest){
         return `api get
